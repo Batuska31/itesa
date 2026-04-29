@@ -8,7 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const DATA_DIR = path.join(__dirname, 'data');
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
-if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR);
+try {
+  if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR);
+} catch (e) {
+  console.warn('Could not create uploads directory (might be on a read-only environment)');
+}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, UPLOADS_DIR),
@@ -232,10 +236,14 @@ app.post('/api/upload-catalog', authMiddleware, upload.single('catalog'), (req, 
 });
 
 // ═══════════════════════════════════════════
-//  Start Server
+//  Start Server (Only if not on Vercel)
 // ═══════════════════════════════════════════
-app.listen(PORT, () => {
-  console.log(`\n  🚀 ITESA Server running at:`);
-  console.log(`     http://localhost:${PORT}`);
-  console.log(`     Admin: http://localhost:${PORT}/admin.html\n`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`\n  🚀 ITESA Server running at:`);
+    console.log(`     http://localhost:${PORT}`);
+    console.log(`     Admin: http://localhost:${PORT}/admin.html\n`);
+  });
+}
+
+module.exports = app;
