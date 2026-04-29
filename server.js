@@ -9,7 +9,8 @@ const DATA_DIR = path.join(__dirname, 'data');
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname));
+
+// (Statik dosyalar Vercel tarafından otomatik olarak servis edilecektir)
 
 // ═══════════════════════════════════════════
 //  HELPERS — Read JSON files
