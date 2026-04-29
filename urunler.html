@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ürünler | ITESA — Adaptörler, Kablolar, EV Şarj ve Powerbank</title>
+<meta name="description" content="ITESA ürün kataloğu: GaN adaptörler, USB-C kablolar, araç şarj istasyonları, powerbank ve endüstriyel güç çözümleri."/>
+<meta property="og:title" content="Ürünler | ITESA"/>
+<link rel="canonical" href="https://itesa.com.tr/urunler"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        "primary":"#003d9b","primary-container":"#0052cc","on-primary":"#ffffff",
+        "surface":"#f7f9fc","on-surface":"#191c1e","on-surface-variant":"#434654",
+        "outline-variant":"#c3c6d6","surface-container-low":"#f2f4f7",
+        "surface-container-lowest":"#ffffff","secondary-container":"#d6e3fb"
+      },
+      fontFamily:{"headline":["Manrope"],"body":["Inter"]}
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="animations.css"/>
+<style>
+body{font-family:'Inter',sans-serif;background:#f7f9fc;color:#191c1e;overflow-x:hidden}
+h1,h2,h3{font-family:'Manrope',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400;vertical-align:middle}
+.filter-btn{padding:10px 24px;border-radius:9999px;font-size:14px;font-weight:500;transition:all .3s;cursor:pointer;border:1.5px solid #e2e8f0;background:#fff;color:#64748b}
+.filter-btn:hover{border-color:#003d9b;color:#003d9b}
+.filter-btn.active{background:#003d9b;color:#fff;border-color:#003d9b}
+.product-card{transition:all .4s cubic-bezier(.16,1,.3,1)}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px -12px rgba(0,61,155,0.08)}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="sticky top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm" id="main-nav">
+<div class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+<a href="index.html"><img src="logo.png" alt="ITESA" class="h-10"/></a>
+<div class="hidden md:flex items-center space-x-8 font-medium tracking-tight text-slate-600">
+<a class="hover:text-blue-600 transition-all underline-grow" href="index.html">Ana Sayfa</a>
+<a class="hover:text-blue-600 transition-all underline-grow" href="cozumler.html">Çözümler</a>
+<a class="text-blue-700 font-semibold border-b-2 border-blue-700 pb-1" href="urunler.html">Ürünler</a>
+<a class="hover:text-blue-600 transition-all underline-grow" href="sektorler.html">Sektörler</a>
+<a class="hover:text-blue-600 transition-all underline-grow" href="hakkimizda.html">Hakkımızda</a>
+<a class="hover:text-blue-600 transition-all underline-grow" href="blog.html">Blog</a>
+<a class="hover:text-blue-600 transition-all underline-grow" href="iletisim.html">İletişim</a>
+</div>
+<button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2"><span class="material-symbols-outlined text-2xl">menu</span></button>
+</div>
+<div id="mobile-menu" class="hidden md:hidden bg-white border-t px-8 py-6 space-y-4">
+<a class="block" href="index.html">Ana Sayfa</a><a class="block" href="cozumler.html">Çözümler</a>
+<a class="block text-blue-700 font-semibold" href="urunler.html">Ürünler</a>
+<a class="block" href="sektorler.html">Sektörler</a><a class="block" href="hakkimizda.html">Hakkımızda</a>
+<a class="block" href="blog.html">Blog</a><a class="block" href="iletisim.html">İletişim</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="py-20 md:py-28 px-8 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/3 to-transparent -z-10"></div>
+<div class="max-w-7xl mx-auto">
+<span class="inline-block px-4 py-1 mb-6 rounded-full bg-secondary-container text-primary text-xs font-bold uppercase tracking-widest" data-animate="fade-up">Ürün Kataloğu</span>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6" data-animate="fade-up" data-delay="1">Tüm Ürünler</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl" data-animate="fade-up" data-delay="2">Endüstriyel güç çözümlerinden tüketici elektroniğine kadar geniş ürün yelpazemizi keşfedin.</p>
+</div>
+</section>
+
+<!-- Filters -->
+<section class="px-8 pb-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-wrap gap-3" id="filter-bar" data-animate="fade-up" data-delay="3">
+<button class="filter-btn active" onclick="filterProducts('all')">Tümü</button>
+<button class="filter-btn" onclick="filterProducts('adaptorler')">Adaptörler</button>
+<button class="filter-btn" onclick="filterProducts('kablolar')">Kablolar</button>
+<button class="filter-btn" onclick="filterProducts('arac-sarj')">Araç Şarjı</button>
+<button class="filter-btn" onclick="filterProducts('powerbank')">Powerbank</button>
+</div>
+<div class="mt-4 text-sm text-on-surface-variant"><span id="product-count">0</span> ürün listeleniyor</div>
+</div>
+</section>
+
+<!-- Products Grid -->
+<section class="px-8 pb-24">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-grid">
+<!-- Products loaded dynamically -->
+</div>
+<div id="no-products" class="hidden text-center py-20 text-on-surface-variant">
+<span class="material-symbols-outlined text-6xl opacity-30 mb-4 block">search_off</span>
+<p class="text-lg">Bu kategoride henüz ürün bulunmuyor.</p>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="px-8 pb-24">
+<div class="max-w-7xl mx-auto bg-primary-container rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -mr-48 -mt-48"></div>
+<div class="relative z-10">
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-6" data-animate="fade-up">Toplu Sipariş ve OEM/ODM</h2>
+<p class="text-white/80 text-lg mb-10 max-w-xl mx-auto" data-animate="fade-up" data-delay="1">Kurumsal siparişler için özel fiyat teklifi alın. Markanıza özel üretim yapıyoruz.</p>
+<a href="iletisim.html" class="bg-white text-primary px-10 py-5 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all inline-flex items-center gap-3">Teklif İste <span class="material-symbols-outlined">send</span></a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 bg-slate-50">
+<div class="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<a href="index.html"><img src="logo.png" alt="ITESA" class="h-8"/></a>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-500 text-sm hover:text-blue-700" href="gizlilik.html">Gizlilik Politikası</a>
+<a class="text-slate-500 text-sm hover:text-blue-700" href="kullanim-sartlari.html">Kullanım Şartları</a>
+<a class="text-slate-500 text-sm hover:text-blue-700" href="cerez-politikasi.html">Çerez Politikası</a>
+<a class="text-slate-500 text-sm hover:text-blue-700" href="kariyer.html">Kariyer</a>
+<a class="text-sm text-slate-500 hover:text-blue-700 transition-colors font-bold flex items-center gap-1" href="/uploads/katalog.pdf" target="_blank" download="ITESA_Katalog"><span class="material-symbols-outlined" style="font-size:16px;">download</span>Katalog İndir</a>
+<a class="text-sm text-slate-500 hover:text-blue-700 transition-colors" href="urunler.html">Ürünler</a>
+<a class="text-sm border-l border-slate-300 pl-4 ml-4 text-slate-400 hover:text-blue-700 transition-colors" href="admin.html">Yönetici Girişi</a>
+</div>
+<p class="text-sm text-slate-500">© 2024 ITESA. Tüm hakları saklıdır.</p>
+</div>
+</footer>
+
+<script src="animations.js"></script>
+<script>
+let allProducts = [];
+let currentFilter = 'all';
+
+async function loadProducts() {
+  try {
+    const r = await fetch('/api/products');
+    allProducts = await r.json();
+    renderProducts();
+  } catch(e) { console.error('Ürünler yüklenemedi', e); }
+}
+
+function filterProducts(category) {
+  currentFilter = category;
+  // Update filter buttons
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderProducts();
+}
+
+function renderProducts() {
+  const filtered = currentFilter === 'all' ? allProducts : allProducts.filter(p => p.category === currentFilter);
+  const grid = document.getElementById('products-grid');
+  const noProducts = document.getElementById('no-products');
+  document.getElementById('product-count').textContent = filtered.length;
+
+  if(filtered.length === 0) {
+    grid.innerHTML = '';
+    noProducts.classList.remove('hidden');
+    return;
+  }
+  noProducts.classList.add('hidden');
+
+  grid.innerHTML = filtered.map((p, i) => `
+    <div class="product-card bg-surface-container-lowest rounded-3xl p-6 flex flex-col h-full border border-outline-variant/10 group"
+         style="animation: fadeInUp 0.5s ${i * 0.08}s both">
+      <div class="aspect-square rounded-2xl overflow-hidden mb-6 bg-surface-container-low flex items-center justify-center p-6 relative">
+        ${p.badge ? '<span class="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full z-10">' + p.badge + '</span>' : ''}
+        <img alt="${p.name}" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" src="${p.image}"/>
+      </div>
+      <div class="flex-1 flex flex-col">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest bg-slate-100 px-2 py-0.5 rounded">${getCategoryName(p.category)}</span>
+        </div>
+        <h3 class="text-lg font-bold mb-2 group-hover:text-primary transition-colors">${p.name}</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-4 flex-1">${p.description}</p>
+        ${p.specs && p.specs.length ? '<div class="flex flex-wrap gap-2 mb-4">' + p.specs.map(s => '<span class="text-[11px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-medium">' + s + '</span>').join('') + '</div>' : ''}
+        <div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-100">
+          <span class="text-xl font-bold text-primary">${p.price}</span>
+          <button onclick="openProductDetail(${p.id})" class="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">İncele <span class="material-symbols-outlined text-base">arrow_forward</span></button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function getCategoryName(cat) {
+  const names = {adaptorler:'Adaptör', kablolar:'Kablo', 'arac-sarj':'EV Şarj', powerbank:'Powerbank'};
+  return names[cat] || cat;
+}
+
+// Modal Logic
+function openProductDetail(id) {
+  const p = allProducts.find(x => x.id === id);
+  if(!p) return;
+  document.getElementById('modal-img').src = p.image;
+  document.getElementById('modal-title').textContent = p.name;
+  document.getElementById('modal-desc').textContent = p.description;
+  document.getElementById('modal-price').textContent = p.price;
+  document.getElementById('modal-cat').textContent = getCategoryName(p.category);
+  
+  const specsGrid = document.getElementById('modal-specs');
+  if(p.specs && p.specs.length) {
+    specsGrid.innerHTML = p.specs.map(s => `<div class="bg-surface px-4 py-2 rounded-xl text-sm font-semibold border border-outline-variant/10 flex items-center justify-center text-center">${s}</div>`).join('');
+  } else {
+    specsGrid.innerHTML = '';
+  }
+  
+  const modal = document.getElementById('product-modal');
+  modal.classList.remove('hidden');
+  // Small animation trick
+  setTimeout(() => {
+    modal.querySelector('.bg-white').classList.add('scale-100', 'opacity-100');
+    modal.querySelector('.bg-white').classList.remove('scale-95', 'opacity-0');
+  }, 10);
+}
+
+function closeProductModal() {
+  const modal = document.getElementById('product-modal');
+  modal.querySelector('.bg-white').classList.remove('scale-100', 'opacity-100');
+  modal.querySelector('.bg-white').classList.add('scale-95', 'opacity-0');
+  setTimeout(() => modal.classList.add('hidden'), 300);
+}
+
+// Init
+loadProducts();
+</script>
+
+<!-- Product Detail Modal -->
+<div id="product-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="closeProductModal()"></div>
+  <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative z-10 scale-95 opacity-0 transition-all duration-300 shadow-2xl flex flex-col md:flex-row">
+    <button onclick="closeProductModal()" class="absolute top-4 right-4 w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center hover:bg-slate-200 transition-colors z-20"><span class="material-symbols-outlined">close</span></button>
+    <div class="w-full md:w-1/2 bg-surface-container-low p-8 flex items-center justify-center min-h-[300px]">
+      <img id="modal-img" src="" alt="" class="max-w-full max-h-full object-contain drop-shadow-xl"/>
+    </div>
+    <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col">
+      <div class="mb-4">
+        <span id="modal-cat" class="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full uppercase tracking-widest"></span>
+      </div>
+      <h2 id="modal-title" class="text-3xl font-headline font-bold mb-4"></h2>
+      <div class="text-3xl font-bold text-primary mb-6" id="modal-price"></div>
+      <p id="modal-desc" class="text-on-surface-variant leading-relaxed mb-8"></p>
+      
+      <div class="mb-8">
+        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">ÖZELLİKLER</h4>
+        <div id="modal-specs" class="grid grid-cols-2 gap-3"></div>
+      </div>
+      
+      <div class="mt-auto pt-8 border-t border-slate-100">
+        <a href="iletisim.html" class="w-full bg-primary text-white font-bold text-center py-4 rounded-xl hover:bg-primary/90 transition-colors inline-block text-lg">Toplu Teklif İste</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

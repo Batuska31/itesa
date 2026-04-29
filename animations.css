@@ -1,0 +1,174 @@
+/* ═══════════════════════════════════════════════════════
+   ITESA — Scroll Animations & Micro-interactions
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Base: Hidden before animation triggers ── */
+[data-animate] {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none !important;
+}
+
+/* ── Fade In Up ── */
+[data-animate="fade-up"] {
+  transform: translateY(50px);
+}
+
+/* ── Fade In Down ── */
+[data-animate="fade-down"] {
+  transform: translateY(-50px);
+}
+
+/* ── Fade In Left ── */
+[data-animate="fade-left"] {
+  transform: translateX(-60px);
+}
+
+/* ── Fade In Right ── */
+[data-animate="fade-right"] {
+  transform: translateX(60px);
+}
+
+/* ── Scale Up ── */
+[data-animate="scale-up"] {
+  transform: scale(0.85);
+}
+
+/* ── Zoom In ── */
+[data-animate="zoom-in"] {
+  transform: scale(0.9);
+}
+
+/* ── Rotate In ── */
+[data-animate="rotate-in"] {
+  transform: rotate(-5deg) scale(0.9);
+}
+
+/* ── Blur In ── */
+[data-animate="blur-in"] {
+  filter: blur(10px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-animate="blur-in"].is-visible {
+  filter: blur(0);
+}
+
+/* ── Stagger Children ── */
+[data-stagger] > [data-animate] {
+  transition-delay: calc(var(--stagger-index, 0) * 0.12s);
+}
+
+/* ── Delay Modifiers ── */
+[data-delay="1"] { transition-delay: 0.1s !important; }
+[data-delay="2"] { transition-delay: 0.2s !important; }
+[data-delay="3"] { transition-delay: 0.3s !important; }
+[data-delay="4"] { transition-delay: 0.4s !important; }
+[data-delay="5"] { transition-delay: 0.5s !important; }
+[data-delay="6"] { transition-delay: 0.6s !important; }
+
+/* ── Speed Modifiers ── */
+[data-speed="fast"] { transition-duration: 0.5s !important; }
+[data-speed="slow"] { transition-duration: 1.2s !important; }
+
+/* ── Parallax ── */
+[data-parallax] {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ── Counter Animation ── */
+.counter-animated {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Card Hover Lift ── */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 61, 155, 0.08);
+}
+
+/* ── Image Reveal ── */
+.img-reveal {
+  overflow: hidden;
+}
+.img-reveal img {
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-reveal:hover img {
+  transform: scale(1.05);
+}
+
+/* ── Text Gradient Shimmer ── */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-shimmer {
+  background: linear-gradient(90deg, #003d9b 0%, #0c56d0 25%, #b2c5ff 50%, #0c56d0 75%, #003d9b 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Floating elements ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(2deg); }
+  66% { transform: translateY(-6px) rotate(-1deg); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+/* ── Pulse glow ── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 61, 155, 0.2); }
+  50% { box-shadow: 0 0 0 20px rgba(0, 61, 155, 0); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* ── Underline grow ── */
+.underline-grow {
+  position: relative;
+}
+.underline-grow::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #003d9b;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.underline-grow:hover::after {
+  width: 100%;
+}
+
+/* ── Smooth page load ── */
+body {
+  animation: pageLoad 0.6s ease-out;
+}
+@keyframes pageLoad {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
